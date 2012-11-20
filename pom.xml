@@ -6,7 +6,7 @@
 
 	<groupId>com.vathanakmao.testproj</groupId>
 	<artifactId>gae-sampleapp</artifactId>
-	<version>1.0</version>
+	<version>1</version>
 	<packaging>war</packaging>
 
 	<properties>

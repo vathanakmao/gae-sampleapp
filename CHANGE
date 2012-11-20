@@ -1,8 +1,9 @@
 + Description: Track all changes of this project.
 + Created by Vathanak Mao on 20th November 2012
 
-Version 1.0
+Version 1
 --------------------------------------------------------------------------------------------------------------------------
+Changed artifact version from 1.0 to 1 cause GAE allows only integer for app version (error when deploy)
 Set project version for GAE app version in appengine-web.xml
 Add required libs for GAE webapp (no persistence)
 Add required libs for Spring MVC
