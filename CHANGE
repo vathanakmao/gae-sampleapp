@@ -1,0 +1,8 @@
++ Description: Track all changes of this project.
++ Created by Vathanak Mao on 20th November 2012
+
+Version 1.0
+--------------------------------------------------------------------------------------------------------------------------
+Set project version for GAE app version in appengine-web.xml
+Add required libs for GAE webapp (no persistence)
+Add required libs for Spring MVC
