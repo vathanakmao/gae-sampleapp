@@ -1,5 +1,7 @@
 package com.vathanakmao.testproj.sampleapp.gae.web.interceptor;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -13,14 +15,29 @@ public class LogInterceptor extends HandlerInterceptorAdapter {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        log.info("Start handling the request for " + request.getRequestURI());
+        StringBuffer str = new StringBuffer();
+        str.append(request.getRequestURL());
+        str.append("?");
+
+        Map<String, String[]> params = request.getParameterMap();
+
+        for(String name : params.keySet()) {
+            for(String value : params.get(name)) {
+                str.append(name);
+                str.append("=");
+                str.append(value);
+                str.append("&");
+            }
+        }
+
+        log.info(str.toString());
+
         return true;
     }
 
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView)
             throws Exception {
-        log.info("Finish handling the request for " + request.getRequestURI());
     }
 
     @Override

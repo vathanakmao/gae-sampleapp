@@ -3,14 +3,11 @@ package com.vathanakmao.testproj.sampleapp.gae.util;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
 
 public class BindingResultParser {
-    private static final Logger log                      = LoggerFactory.getLogger(BindingResultParser.class);
 
     private static final String ERROR_TYPE_MISMATCH_LONG = "must be an integer";
 
@@ -26,12 +23,6 @@ public class BindingResultParser {
 
                 if (error instanceof FieldError) {
                     FieldError fieldError = ((FieldError) error);
-
-                    log.info("Code: " + fieldError.getCode() + ", Field: " + fieldError.getCode() + ", ObjectName:"
-                            + fieldError.getObjectName() + ", RejectedValue=" + fieldError.getRejectedValue());
-
-                    msg.append(fieldError.getField());
-                    msg.append(": ");
 
                     if (error.getCode().startsWith("typeMismatch")
                             && (bindingResult.getFieldType(fieldError.getField()).equals(Long.class) || bindingResult

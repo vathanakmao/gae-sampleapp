@@ -10,8 +10,9 @@
 	<packaging>war</packaging>
 
 	<properties>
-		<gaeAppVersion>${project.version}</gaeAppVersion>
 		<webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
+
+		<logFileName>${project.artifactId}</logFileName>
 
 		<gaeVersion>1.5.3</gaeVersion>
 		<springVersion>3.1.2.RELEASE</springVersion>
@@ -96,7 +97,7 @@
 			<version>${gaeVersion}</version>
 			<scope>test</scope>
 		</dependency>
-		
+
 
 		<!-- Servlet -->
 		<dependency>
@@ -115,8 +116,7 @@
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-jdk14</artifactId>
-			<version>${slf4jVersion}</version>
-			<scope>runtime</scope>
+			<version>1.6.6</version>
 		</dependency>
 
 		<!-- Jackson JSON Mapper -->
@@ -147,9 +147,51 @@
 		</dependency>
 	</dependencies>
 
+	<profiles>
+		<profile>
+			<id>dev</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+
+			<properties>
+				<gaeApplicationVersion>dev</gaeApplicationVersion>
+				<gaeApplicationEnv>dev</gaeApplicationEnv>
+			</properties>
+		</profile>
+
+		<profile>
+			<id>stage</id>
+			<properties>
+				<gaeApplicationVersion>stage</gaeApplicationVersion>
+				<gaeApplicationEnv>stage</gaeApplicationEnv>
+			</properties>
+		</profile>
+
+		<profile>
+			<id>prod</id>
+			<properties>
+				<gaeApplicationVersion>${project.version}</gaeApplicationVersion>
+				<gaeApplicationEnv>prod</gaeApplicationEnv>
+			</properties>
+		</profile>
+	</profiles>
+
 	<build>
 		<finalName>gae-sampleapp</finalName>
 
+		<resources>
+			<!-- base set of resources -->
+			<resource>
+				<directory>${project.basedir}/src/main/resources</directory>
+			</resource>
+
+			<!-- pick environment-specific files from server directory; excluded above -->
+			<resource>
+				<directory>${project.basedir}/src/env/${gaeApplicationEnv}</directory>
+			</resource>
+		</resources>
+		
 		<pluginManagement>
 			<plugins>
 
@@ -175,7 +217,6 @@
 		</pluginManagement>
 
 		<plugins>
-
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
@@ -210,30 +251,6 @@
 					<unpackVersion>${gaeVersion}</unpackVersion>
 					<serverId>appengine.google.com</serverId>
 				</configuration>
-				<dependencies>
-					<dependency>
-						<groupId>net.kindleit</groupId>
-						<artifactId>gae-runtime</artifactId>
-						<version>${gaeVersion}</version>
-						<type>pom</type>
-					</dependency>
-				</dependencies>
-				<executions>
-					<execution>
-						<id>start-gae</id>
-						<goals>
-							<goal>stop</goal>
-							<goal>unpack</goal>
-							<goal>start</goal>
-						</goals>
-					</execution>
-					<execution>
-						<id>stop-gae</id>
-						<goals>
-							<goal>stop</goal>
-						</goals>
-					</execution>
-				</executions>
 			</plugin>
 		</plugins>
 	</build>

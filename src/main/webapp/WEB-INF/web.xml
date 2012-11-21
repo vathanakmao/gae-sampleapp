@@ -5,12 +5,12 @@
          version="2.5">
          
     <servlet>
-    	<servlet-name>gaesampleapp</servlet-name>
+    	<servlet-name>gae-sampleapp</servlet-name>
     	<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
 	<servlet-mapping>
-		<servlet-name>gaesampleapp</servlet-name>
+		<servlet-name>gae-sampleapp</servlet-name>
 		<url-pattern>/</url-pattern>
     </servlet-mapping>
     
