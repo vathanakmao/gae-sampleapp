@@ -10,6 +10,7 @@
 	<mvc:annotation-driven />
 	<context:component-scan base-package="com.vathanakmao.testproj.sampleapp.gae.web.controller" />
 	<context:component-scan base-package="com.vathanakmao.testproj.sampleapp.gae.service" />
+	<context:component-scan base-package="com.vathanakmao.testproj.sampleapp.gae.dao" />
 
 	<!-- Static Resources --> 
 	<mvc:resources mapping="css/**" location="/css/" cache-period="0" />
