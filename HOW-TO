@@ -1,2 +1,8 @@
 1- Run "mvn clean gae:run"
 2- Open browser and type "http://localhost:8080/book/addform"
+
+
+* Run unit tests from within IDE
+--------------------------------
+You need to enhance the entity classes first before you can run any unit test from within IDE.
+To enhance them, just run "mvn compile".

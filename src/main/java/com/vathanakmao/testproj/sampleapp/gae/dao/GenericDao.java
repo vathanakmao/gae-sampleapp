@@ -1,14 +1,18 @@
 package com.vathanakmao.testproj.sampleapp.gae.dao;
 
 import java.io.Serializable;
+import java.util.List;
 
 public interface GenericDao<T, ID extends Serializable> {
+
+    List<T> findAll();
 
     /** Persist the newInstance object into database */
     void save(T entity);
 
     /**
-     * Retrieve an object that was previously persisted to the database using the indicated id as primary key
+     * Retrieve an object that was previously persisted to the database using
+     * the indicated id as primary key
      */
     T findById(ID id);
 

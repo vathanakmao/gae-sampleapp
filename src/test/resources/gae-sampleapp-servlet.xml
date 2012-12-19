@@ -12,8 +12,7 @@
 	<context:component-scan base-package="com.vathanakmao.testproj.sampleapp.gae.service" />
 	<context:component-scan base-package="com.vathanakmao.testproj.sampleapp.gae.dao" />
 
-	<!-- Static Resources -->
-	<mvc:resources mapping="js/**" location="/js/" cache-period="0" /> 
+	<!-- Static Resources --> 
 	<mvc:resources mapping="css/**" location="/css/" cache-period="0" />
 	<mvc:resources mapping="images/**" location="/images/"	cache-period="0" />
 

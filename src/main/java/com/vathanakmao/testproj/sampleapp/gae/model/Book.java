@@ -13,7 +13,7 @@ public class Book {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long   id;
+    private Long id;
 
     @Basic
     @NotBlank
@@ -24,49 +24,59 @@ public class Book {
     private String author;
 
     @Basic
-    private int    publishedYear;
+    private int publishedYear;
 
     @Basic
     private double price;
 
+    private Publisher publisher;
+
     public Long getId() {
-        return id;
+	return id;
     }
 
     public void setId(Long id) {
-        this.id = id;
+	this.id = id;
     }
 
     public String getTitle() {
-        return title;
+	return title;
     }
 
     public void setTitle(String title) {
-        this.title = title;
+	this.title = title;
     }
 
     public String getAuthor() {
-        return author;
+	return author;
     }
 
     public void setAuthor(String author) {
-        this.author = author;
+	this.author = author;
     }
 
     public int getPublishedYear() {
-        return publishedYear;
+	return publishedYear;
     }
 
     public void setPublishedYear(int year) {
-        this.publishedYear = year;
+	this.publishedYear = year;
     }
 
     public double getPrice() {
-        return price;
+	return price;
     }
 
     public void setPrice(double price) {
-        this.price = price;
+	this.price = price;
+    }
+
+    public Publisher getPublisher() {
+	return publisher;
+    }
+
+    public void setPublisher(Publisher publisher) {
+	this.publisher = publisher;
     }
 
 }
